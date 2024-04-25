@@ -25,6 +25,7 @@ export default class Field extends React.Component {
         gameFieldService.getField()
             .then(response => {
                 this.setState({ field: response.data });
+                console.log(response.data);
             })
             .catch(error => {
                 console.error('Error fetching game field:', error);
@@ -33,6 +34,9 @@ export default class Field extends React.Component {
 
     render() {
         const { field } = this.state;
+        if(field.tiles == null) {
+            return null;
+        }
         return (
             <div className="field-container">
                 <div>
@@ -46,7 +50,7 @@ export default class Field extends React.Component {
                         <tr key={rowIndex}>
                             {row.map((tile, colIndex) => (
                                 <td key={colIndex}>
-                                    <Tile tile={tile}/>
+                                    <Tile tile={tile} x={colIndex} y={rowIndex} fetchFieldData={this.fetchFieldData.bind(this)}/>
                                 </td>
                             ))}
                         </tr>

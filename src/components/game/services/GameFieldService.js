@@ -6,7 +6,7 @@ const BREAK_BRICK_URL = "http://localhost:8080/api/bricksbreaking/field/breakbri
 
 const getField = () => axios.get(FIELD_URL);
 const newGame = () => axios.get(NEW_GAME_URL);
-const breakBrick = (row,col) => axios.get(`${BREAK_BRICK_URL}?row=${row}?col=${col}`);
+const breakBrick = (x, y) => axios.get(`${BREAK_BRICK_URL}?x=${x}&y=${y}`);
 
 const gameFieldService = {getField, newGame, breakBrick};
 export default gameFieldService;
