@@ -1,11 +1,9 @@
-function Tile({tile}) {
-    let tileClass;
-    tileClass = tile.color.charAt(0);
-
+function Tile({ tile }) {
     return (
-     <td className={tileClass}>
-        <span>{tile.color.charAt(0)}</span>
-     </td>
-    )
+        <td className="tile" data-color={tile.color}>
+            <span></span>
+        </td>
+    );
 }
+
 export default Tile;

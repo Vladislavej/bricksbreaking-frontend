@@ -7,15 +7,23 @@ export default class Field extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            field: { tiles: [] } // Initialize field with an empty tiles array
+            field: { tiles: [] }
         };
     }
 
     componentDidMount() {
-        // Fetch the game field data from the backend API
+        this.fetchFieldData();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.field !== this.props.field) {
+            this.fetchFieldData();
+        }
+    }
+
+    fetchFieldData() {
         gameFieldService.getField()
             .then(response => {
-                // Update component state with received field data
                 this.setState({ field: response.data });
             })
             .catch(error => {
@@ -25,19 +33,26 @@ export default class Field extends React.Component {
 
     render() {
         const { field } = this.state;
-
         return (
-            <div>
-                <h2 className="text-center">Game Field</h2>
-                <div className="game-field">
-                    {field.tiles.map((row, rowIndex) => (
-                        <div key={rowIndex} className="row">
-                            {row.map((tile, colIndex) => (
-                                <Tile tile={tile}/>
-                            ))}
-                        </div>
-                    ))}
+            <div className="field-container">
+                <div>
+                    <div className="toolbar">
+                        <h3>State: {field.gameState}</h3>
+                    </div>
                 </div>
+                <table className="game-field">
+                    <tbody>
+                    {field.tiles.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {row.map((tile, colIndex) => (
+                                <td key={colIndex}>
+                                    <Tile tile={tile}/>
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
         );
     }
