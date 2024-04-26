@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const COMMENTS_API_REST_URL = "http://localhost:8080/api/comment/bricksbreaking";
 
-export default class CommentsComponent extends React.Component {
+export default class Comments extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

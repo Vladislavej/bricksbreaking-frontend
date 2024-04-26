@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const SCORES_API_REST_URL = "http://localhost:8080/api/score/bricksbreaking";
 
-export default class ScoresComponent extends React.Component {
+export default class Scores extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

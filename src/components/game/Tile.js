@@ -1,18 +1,18 @@
 import React from 'react';
 import gameFieldService from "./services/GameFieldService";
 
-function Tile({ tile, x, y, fetchFieldData }) {
+function Tile({ tile, x, y, fetchFieldData, disabled}) {
     const handleClick = () => {
-        console.log(x, y);
-
-        gameFieldService.breakBrick(x, y)
-            .then(response => {
-                console.log('Tile destroyed successfully:', response.data);
-                fetchFieldData(); // Call fetchFieldData from props
-            })
-            .catch(error => {
-                console.error('Error destroying tile:', error);
-            });
+        if (!disabled) {
+            gameFieldService.breakBrick(x, y)
+                .then(response => {
+                    console.log('Tile destroyed successfully:', x, y);
+                    fetchFieldData();
+                })
+                .catch(error => {
+                    console.error('Error destroying tile:', error);
+                });
+        }
     };
 
     if (!tile) {

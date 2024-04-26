@@ -1,7 +1,9 @@
 import './App.css';
-import CommentsComponent from './components/CommentsComponent';
-import ScoresComponent from "./components/ScoresComponent";
+import Comments from './components/Comments';
+import Scores from "./components/Scores";
 import Game from "./components/game/Game";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -10,10 +12,16 @@ function App() {
               <Game/>
           </header>
           <header className="ScoresComponent">
-              <ScoresComponent/>
+              <Scores/>
           </header>
           <header className="CommentsComponent">
-              <CommentsComponent/>
+              <Comments/>
+          </header>
+          <header className="Login">
+              <Login/>
+          </header>
+          <header className="Register">
+              <Register/>
           </header>
       </div>
   );
