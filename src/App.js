@@ -8,7 +8,6 @@ import Register from "./components/Register";
 import Help from "./components/game/Help";
 import CommentForm from "./components/CommentForm";
 import Rating from "./components/Rating";
-
 function App() {
     const [user, setUser] = useState(null);
 

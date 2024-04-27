@@ -21,11 +21,17 @@ export default class Scores extends React.Component {
             });
     }
 
+    formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        const formattedDate = new Date(dateString).toLocaleDateString('sk', options);
+        return formattedDate;
+    }
+
     render() {
         return (
             <div>
                 <h2 className="text-center">Scores</h2>
-                <table className="table table-striped">
+                <table className="table table-striped scores-table">
                     <thead>
                     <tr>
                         <th>Player</th>
@@ -38,7 +44,7 @@ export default class Scores extends React.Component {
                         <tr key={score.id}>
                             <td>{score.player}</td>
                             <td>{score.points}</td>
-                            <td>{score.playedOn}</td>
+                            <td>{this.formatDate(score.playedOn)}</td>
                         </tr>
                     )}
                     </tbody>

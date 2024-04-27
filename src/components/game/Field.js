@@ -40,11 +40,6 @@ export default class Field extends React.Component {
         }
         return (
             <div className="field-container">
-                <div>
-                    <div className="toolbar">
-                        <h3>State: {field.gameState}</h3>
-                    </div>
-                </div>
                 <table className="game-field">
                     <tbody>
                     {field.tiles.map((row, rowIndex) => (

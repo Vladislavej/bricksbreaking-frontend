@@ -9,6 +9,7 @@ function Game() {
     const [score, setScore] = useState(0);
     const [lives, setLives] = useState(3);
     const [difficulty, setDifficulty] = useState(1);
+    const [gameState, setGameState] = useState('');
 
     const newGame = () => {
         console.log(difficulty);
@@ -43,9 +44,21 @@ function Game() {
             });
     }
 
+    const fetchGameState = () => {
+        gameFieldService.getGameState()
+            .then(response => {
+                setGameState(response.data);
+                console.log(response);
+            })
+            .catch(error => {
+                console.error('Error fetching gamestate:', error);
+            });
+    }
+
     const updateStats = () => {
         fetchScore();
         fetchLives();
+        fetchGameState()
     }
 
     return (
@@ -54,6 +67,7 @@ function Game() {
                 <h1>Bricks Breaking</h1>
                 <div className="toolbar">
                     <h3>Score: {score} Lives: {lives} </h3>
+                    <h3>State: {gameState}</h3>
                     <label htmlFor="difficulty">Difficulty:</label>
                     <select
                         id="difficulty"
@@ -69,7 +83,7 @@ function Game() {
                     </button>
                 </div>
                 <header className="GameFieldComponent">
-                    <Field field={field} updateStats={updateStats} />
+                <Field field={field} updateStats={updateStats} />
                 </header>
             </div>
         </div>

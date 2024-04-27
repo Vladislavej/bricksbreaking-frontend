@@ -21,14 +21,20 @@ export default class Comments extends React.Component {
             });
     }
 
+    formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        const formattedDate = new Date(dateString).toLocaleDateString('sk', options);
+        return formattedDate;
+    }
+
     render() {
         return (
             <div>
                 <h2 className="text-center">Comments</h2>
-                <table className="table table-striped">
+                <table className="table table-striped comments-table">
                     <thead>
                     <tr>
-                        <th>Player</th>
+                        <th>User</th>
                         <th>Comment</th>
                         <th>Date</th>
                     </tr>
@@ -38,7 +44,7 @@ export default class Comments extends React.Component {
                         <tr key={comment.id}>
                             <td>{comment.player}</td>
                             <td>{comment.comment}</td>
-                            <td>{comment.commentedOn}</td>
+                            <td>{this.formatDate(comment.commentedOn)}</td>
                         </tr>
                     )}
                     </tbody>
