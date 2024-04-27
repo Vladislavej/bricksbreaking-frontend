@@ -7,7 +7,6 @@ const login = async (username, password) => {
         const response = await axios.get(`${BASE_URL}/login?username=${username}&password=${password}`);
         return response.data;
     } catch (error) {
-        throw error;
     }
 };
 
@@ -16,7 +15,6 @@ const register = async (username, password) => {
         const response = await axios.get(`${BASE_URL}/register?username=${username}&password=${password}`);
         return response.data;
     } catch (error) {
-        throw error;
     }
 };
 

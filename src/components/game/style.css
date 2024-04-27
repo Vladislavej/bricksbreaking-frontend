@@ -48,11 +48,19 @@ table.game-field td.tile {
     50% { opacity: 0; }
     100% { opacity: 1; }
 }
+@keyframes vibrationAnimation {
+    0% { transform: translate(-2px, -2px); }
+    25% { transform: translate(2px, 2px); }
+    50% { transform: translate(0px, 0px); }
+    75% { transform: translate(-2px, 2px); }
+    100% { transform: translate(2px, -2px); }
+}
 
 /* Apply animation to tiles when hovered */
 table.game-field td.tile:hover {
-    animation: blinkAnimation 0.5s infinite; /* Blink continuously */
+    animation: blinkAnimation 0.5s ease-in-out, vibrationAnimation 0.5s infinite; /* Blink and vibrate continuously */
 }
+
 
 
 /* Define the colors for different types of tiles */

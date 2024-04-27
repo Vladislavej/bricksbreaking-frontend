@@ -1,15 +1,14 @@
 import './style.css'
 
-import React, { useState, useEffect } from 'react';
-import gameFieldService from "./services/GameFieldService";
+import React, { useState } from 'react';
+import gameFieldService from "../services/GameFieldService";
 import Field from "./Field";
-import Help from "./Help";
 
 function Game() {
     const [field, setField] = useState({ tiles: [] });
     const [score, setScore] = useState(0);
     const [lives, setLives] = useState(3);
-    const [difficulty, setDifficulty] = useState(0);
+    const [difficulty, setDifficulty] = useState(1);
 
     const newGame = () => {
         console.log(difficulty);
@@ -54,7 +53,7 @@ function Game() {
             <div>
                 <h1>Bricks Breaking</h1>
                 <div className="toolbar">
-                    <h3>Score: {score} Lives: {lives} <Help/></h3>
+                    <h3>Score: {score} Lives: {lives} </h3>
                     <label htmlFor="difficulty">Difficulty:</label>
                     <select
                         id="difficulty"

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import authenticationService from "./game/services/AuthenticaionService";
+import authenticationService from "./services/AuthenticationService";
 
-const Login = () => {
+const Login = ({ user, onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
         try {
-            const success = await authenticationService.login(username, password);
-            if (success) {
+            const userData = await authenticationService.login(username, password);
+            if (userData) {
+                onLogin(userData);
                 console.log('Login successful');
             } else {
                 console.log('Login failed');
@@ -20,10 +21,16 @@ const Login = () => {
 
     return (
         <div>
-            <h2>Login</h2>
-            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={handleLogin}>Login</button>
+            {user ? (
+                <p>Welcome, {user.username}!</p>
+            ) : (
+                <>
+                    <h2>Login</h2>
+                    <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <button onClick={handleLogin}>Login</button>
+                </>
+            )}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import gameFieldService from "./services/GameFieldService";
+import gameFieldService from "../services/GameFieldService";
 
 function Tile({ tile, x, y, fetchFieldData, disabled}) {
     const handleClick = () => {
