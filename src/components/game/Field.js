@@ -1,7 +1,7 @@
 import React from 'react';
-import gameService from "../services/GameService";
+import gameService from "../../services/GameService";
 import Tile from "./Tile";
-
+import "../../css/Field.css"; // Import the CSS file for styling
 
 export default class Field extends React.Component {
     constructor(props) {
@@ -35,18 +35,18 @@ export default class Field extends React.Component {
 
     render() {
         const { field } = this.state;
-        if(field.tiles == null) {
+        if (field.tiles == null) {
             return null;
         }
         return (
-            <div className="field-container">
+            <div className="field-container windows-95">
                 <table className="game-field">
                     <tbody>
                     {field.tiles.map((row, rowIndex) => (
                         <tr key={rowIndex}>
                             {row.map((tile, colIndex) => (
                                 <td key={colIndex}>
-                                    <Tile tile={tile} x={colIndex} y={rowIndex} fetchFieldData={this.fetchFieldData.bind(this)} disabled={field.gameState === 'FAILED'}/>
+                                    <Tile tile={tile} x={colIndex} y={rowIndex} fetchFieldData={this.fetchFieldData.bind(this)} disabled={field.gameState === 'FAILED'} />
                                 </td>
                             ))}
                         </tr>

@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import "../css/Comments.css"; // Import the CSS file for styling
+
 
 const COMMENTS_API_REST_URL = "http://localhost:8080/api/comment/bricksbreaking";
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import gameService from "../services/GameService";
+import gameService from "../../services/GameService";
+import "../../css/Tile.css"; // Import the CSS file for styling
 
-function Tile({ tile, x, y, fetchFieldData, disabled}) {
+function Tile({ tile, x, y, fetchFieldData, disabled }) {
     const handleClick = () => {
         if (!disabled) {
             gameService.breakBrick(x, y)
@@ -20,7 +21,7 @@ function Tile({ tile, x, y, fetchFieldData, disabled}) {
     }
 
     return (
-        <td className="tile" data-color={tile.color} onClick={handleClick}>
+        <td className={`tile ${disabled ? 'disabled' : ''}`} data-color={tile.color} onClick={handleClick}>
             <span></span>
         </td>
     );

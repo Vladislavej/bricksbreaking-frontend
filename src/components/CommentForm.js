@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "../css/Comments.css"; // Import the CSS file for styling
 
 const AddCommentForm = ({ user }) => {
     const [comment, setComment] = useState('');

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import "../css/Scores.css"; // Import the CSS file for styling
 
 const SCORES_API_REST_URL = "http://localhost:8080/api/score/bricksbreaking";
 

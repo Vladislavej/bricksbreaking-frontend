@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './css/App.css';
 import Comments from './components/Comments';
 import Scores from "./components/Scores";
 import Game from "./components/game/Game";
@@ -34,7 +34,7 @@ function App() {
                 )}
             </header>
             <header className="GameComponent">
-                <Game user={user}/><Help/><Rating/>
+                <Game user={user}/>
             </header>
             <header className="ScoresComponent">
                 <Scores/>

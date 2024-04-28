@@ -1,7 +1,7 @@
-import './style.css'
+import '../../css/Style.css'
 
 import React, {useEffect, useState} from 'react';
-import gameService from "../services/GameService";
+import gameService from "../../services/GameService";
 import Field from "./Field";
 
 function Game({ user }) {
@@ -94,13 +94,11 @@ function Game({ user }) {
     }
 
     return (
-        <div className="game-container">
+        <div className="game-container windows-95">
             <div>
-                <h1>Bricks Breaking</h1>
                 <div className="toolbar">
-                    <h3>Score: {score} Lives: {lives} </h3>
-                    <h3>State: {gameState}</h3>
-                    <label htmlFor="difficulty">Difficulty:</label>
+                    <h3>Score: {score} Lives: {lives} State: {gameState}</h3>
+                    <label htmlFor="difficulty"></label>
                     <select
                         id="difficulty"
                         value={difficulty}
@@ -115,7 +113,7 @@ function Game({ user }) {
                     </button>
                 </div>
                 <header className="GameFieldComponent">
-                <Field field={field} updateStats={updateStats} />
+                    <Field field={field} updateStats={updateStats} />
                 </header>
             </div>
         </div>
