@@ -35,6 +35,7 @@ function App() {
             </header>
             <header className="GameComponent">
                 <Game user={user}/>
+                <Help/>
             </header>
             <header className="ScoresComponent">
                 <Scores/>

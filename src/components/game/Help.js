@@ -15,8 +15,11 @@ function Help() {
                     <h2>Game Instructions</h2>
                     <p>
                         Destroy all the bricks by clicking them in groups of the same color.
-                        The more you get at once, the higher the score. If you try to remove
-                        a single brick you will lose a life!
+                    </p>
+                    <p>
+                        The more you get at once, the higher the score.
+                    </p>
+                    <p>If you try to remove a single brick you will lose a life!
                     </p>
                     <ul>
                         <li>🟥 1 point</li>
