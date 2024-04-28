@@ -14,5 +14,5 @@ const getScore = () => axios.get(GET_SCORE);
 const getLives = () => axios.get(GET_LIVES);
 const getGameState = () => axios.get(GET_GAME_STATE);
 
-const gameFieldService = {getField, newGame, breakBrick, getScore, getLives, getGameState};
-export default gameFieldService;
+const gameService = {getField, newGame, breakBrick, getScore, getLives, getGameState};
+export default gameService;

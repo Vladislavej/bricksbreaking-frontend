@@ -58,7 +58,7 @@ table.game-field td.tile {
 
 /* Apply animation to tiles when hovered */
 table.game-field td.tile:hover {
-    animation: blinkAnimation 0.5s ease-in-out, vibrationAnimation 0.5s infinite; /* Blink and vibrate continuously */
+    animation: blinkAnimation 0.5s ease-in-out, vibrationAnimation 1s infinite; /* Blink and vibrate continuously */
 }
 
 

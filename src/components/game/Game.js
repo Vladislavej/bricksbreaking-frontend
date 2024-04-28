@@ -1,19 +1,25 @@
 import './style.css'
 
-import React, { useState } from 'react';
-import gameFieldService from "../services/GameFieldService";
+import React, {useEffect, useState} from 'react';
+import gameService from "../services/GameService";
 import Field from "./Field";
 
-function Game() {
+function Game({ user }) {
     const [field, setField] = useState({ tiles: [] });
     const [score, setScore] = useState(0);
     const [lives, setLives] = useState(3);
     const [difficulty, setDifficulty] = useState(1);
     const [gameState, setGameState] = useState('');
 
+    useEffect(() => {
+        if (gameState === 'SOLVED' && user != null) {
+            uploadScore();
+        }
+    }, [gameState, user]);
+
     const newGame = () => {
         console.log(difficulty);
-        gameFieldService.newGame(difficulty)
+        gameService.newGame(difficulty)
             .then(response => {
                 setField(response.data);
             })
@@ -23,7 +29,7 @@ function Game() {
     };
 
     const fetchScore = () => {
-        gameFieldService.getScore()
+        gameService.getScore()
             .then(response => {
                 setScore(response.data);
                 console.log(response);
@@ -34,7 +40,7 @@ function Game() {
     }
 
     const fetchLives = () => {
-        gameFieldService.getLives()
+        gameService.getLives()
             .then(response => {
                 setLives(response.data);
                 console.log(response);
@@ -45,7 +51,7 @@ function Game() {
     }
 
     const fetchGameState = () => {
-        gameFieldService.getGameState()
+        gameService.getGameState()
             .then(response => {
                 setGameState(response.data);
                 console.log(response);
@@ -54,6 +60,32 @@ function Game() {
                 console.error('Error fetching gamestate:', error);
             });
     }
+
+    const uploadScore = () => {
+        const newScore = {
+            player: user.username,
+            game: 'bricksbreaking',
+            points: score,
+            playedOn: new Date()
+        };
+
+        fetch('http://localhost:8080/api/score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newScore)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to upload score');
+                }
+                console.log('Score uploaded successfully');
+            })
+            .catch(error => {
+                console.error('Error uploading score:', error);
+            });
+    };
 
     const updateStats = () => {
         fetchScore();

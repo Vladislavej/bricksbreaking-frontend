@@ -13,6 +13,7 @@ function App() {
 
     const handleLogin = (userData) => {
         setUser(userData);
+        console.log(userData)
     };
 
     const handleLogout = () => {
@@ -33,7 +34,7 @@ function App() {
                 )}
             </header>
             <header className="GameComponent">
-                <Game/><Help/><Rating/>
+                <Game user={user}/><Help/><Rating/>
             </header>
             <header className="ScoresComponent">
                 <Scores/>

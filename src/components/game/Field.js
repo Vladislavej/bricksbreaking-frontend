@@ -1,5 +1,5 @@
 import React from 'react';
-import gameFieldService from "../services/GameFieldService";
+import gameService from "../services/GameService";
 import Tile from "./Tile";
 
 
@@ -22,7 +22,7 @@ export default class Field extends React.Component {
     }
 
     fetchFieldData() {
-        gameFieldService.getField()
+        gameService.getField()
             .then(response => {
                 this.setState({ field: response.data });
                 console.log(response.data);
