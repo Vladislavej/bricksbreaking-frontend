@@ -10,6 +10,10 @@ function Game({ user }) {
     const [lives, setLives] = useState(3);
     const [difficulty, setDifficulty] = useState(1);
     const [gameState, setGameState] = useState('');
+    const [rows, setRows] = useState(10);
+    const [cols, setCols] = useState(10);
+    const [numColors, setNumColors] = useState(5);
+
 
     useEffect(() => {
         if (gameState === 'SOLVED' && user != null) {
@@ -20,6 +24,17 @@ function Game({ user }) {
     const newGame = () => {
         console.log(difficulty);
         gameService.newGame(difficulty)
+            .then(response => {
+                setField(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching game field:', error);
+            });
+    };
+
+    const newCustomGame = () => {
+        console.log(numColors, rows, cols);
+        gameService.newGameCustom(numColors, rows, cols)
             .then(response => {
                 setField(response.data);
             })
@@ -94,7 +109,7 @@ function Game({ user }) {
     }
 
     return (
-        <div className="game-container windows-95">
+        <div className="game-container">
             <div>
                 <div className="toolbar">
                     <h3>Score: {score} Lives: {lives} State: {gameState}</h3>
@@ -109,11 +124,25 @@ function Game({ user }) {
                         <option value={2}>Hard</option>
                     </select>
                     <button onClick={newGame}>
-                        New Game
+                        New Game Classic
                     </button>
+                    <button onClick={newCustomGame}>
+                        Custom Game
+                    </button>
+                    <form>
+                        <label htmlFor="rows">Rows: <text>{rows}</text> </label><br/>
+                        <input type="range" id="rows" name="rows" min="5" max="50" value={rows}
+                               onChange={(e) => setRows(parseInt(e.target.value))}/><br/>
+                        <label htmlFor="cols">Cols: <text>{cols}</text></label><br/>
+                        <input type="range" id="cols" name="cols" min="5" max="50" value={cols}
+                               onChange={(e) => setCols(parseInt(e.target.value))}/><br/>
+                        <label htmlFor="numColors">Colors: <text>{numColors}</text></label><br/>
+                        <input type="range" id="numColors" name="numColors" min="2" max="8" value={numColors}
+                               onChange={(e) => setNumColors(parseInt(e.target.value))}/><br/>
+                    </form>
                 </div>
                 <header className="GameFieldComponent">
-                    <Field field={field} updateStats={updateStats} />
+                    <Field field={field} updateStats={updateStats}/>
                 </header>
             </div>
         </div>
