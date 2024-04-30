@@ -22,7 +22,7 @@ function Game({ user }) {
     }, [gameState, user]);
 
     const newGame = () => {
-        console.log(difficulty);
+        console.log('Classic game: difficulty ' + difficulty);
         gameService.newGame(difficulty)
             .then(response => {
                 setField(response.data);
@@ -33,7 +33,7 @@ function Game({ user }) {
     };
 
     const newCustomGame = () => {
-        console.log(numColors, rows, cols);
+        console.log('Custom game: ' + numColors + ' colors, ' + rows + ' rows, ' + cols + ' cols.');
         gameService.newGameCustom(numColors, rows, cols)
             .then(response => {
                 setField(response.data);
@@ -47,7 +47,7 @@ function Game({ user }) {
         gameService.getScore()
             .then(response => {
                 setScore(response.data);
-                console.log(response);
+                console.log('Score:' + response.data);
             })
             .catch(error => {
                 console.error('Error fetching score:', error);
@@ -58,7 +58,7 @@ function Game({ user }) {
         gameService.getLives()
             .then(response => {
                 setLives(response.data);
-                console.log(response);
+                console.log('Lives:' + response.data);
             })
             .catch(error => {
                 console.error('Error fetching lives:', error);
@@ -69,7 +69,6 @@ function Game({ user }) {
         gameService.getGameState()
             .then(response => {
                 setGameState(response.data);
-                console.log(response);
             })
             .catch(error => {
                 console.error('Error fetching gamestate:', error);
@@ -124,17 +123,17 @@ function Game({ user }) {
                         <option value={2}>Hard</option>
                     </select>
                     <button onClick={newGame}>
-                        New Game Classic
+                        Classic Game
                     </button>
                     <button onClick={newCustomGame}>
                         Custom Game
                     </button>
                     <form>
                         <label htmlFor="rows">Rows: <text>{rows}</text> </label><br/>
-                        <input type="range" id="rows" name="rows" min="5" max="50" value={rows}
+                        <input type="range" id="rows" name="rows" min="5" max="25" value={rows}
                                onChange={(e) => setRows(parseInt(e.target.value))}/><br/>
                         <label htmlFor="cols">Cols: <text>{cols}</text></label><br/>
-                        <input type="range" id="cols" name="cols" min="5" max="50" value={cols}
+                        <input type="range" id="cols" name="cols" min="5" max="25" value={cols}
                                onChange={(e) => setCols(parseInt(e.target.value))}/><br/>
                         <label htmlFor="numColors">Colors: <text>{numColors}</text></label><br/>
                         <input type="range" id="numColors" name="numColors" min="2" max="8" value={numColors}

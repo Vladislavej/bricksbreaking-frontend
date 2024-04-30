@@ -1,7 +1,7 @@
 import React from 'react';
 import gameService from "../../services/GameService";
 import Tile from "./Tile";
-import "../../css/Field.css"; // Import the CSS file for styling
+import "../../css/Field.css";
 
 export default class Field extends React.Component {
     constructor(props) {
