@@ -6,9 +6,12 @@ import mainTheme from "../../sounds/main.mp3";
 import victorySound from "../../sounds/victory.mp3";
 import failSound from "../../sounds/fail.mp3";
 import buttonSound from "../../sounds/button.mp3";
+import goodSound from "../../sounds/good.mp3";
+import badSound from "../../sounds/bad.mp3";
 import heartImage from "../../images/heart.png";
 import starImage from "../../images/star.png";
-
+import Help from "./Help";
+import Confetti from 'react-confetti';
 function Game({ user }) {
     const [field, setField] = useState({ tiles: [] });
     const [score, setScore] = useState(0);
@@ -24,12 +27,35 @@ function Game({ user }) {
     const [victoryAudio] = useState(new Audio(victorySound));
     const [failAudio] = useState(new Audio(failSound));
     const [buttonAudio] = useState(new Audio(buttonSound));
+    const [showHelp, setShowHelp] = useState(false);
+    const [goodAudio] = useState(new Audio(goodSound));
+    const [badAudio] = useState(new Audio(badSound));
+
+    const toggleHelp = () => {
+        setShowHelp(!showHelp);
+    };
 
     useEffect(() => {
         if (gameState === 'SOLVED' && user != null) {
             uploadScore();
         }
     }, [gameState, user]);
+
+    useEffect(() => {
+        if(score === 0) { return }
+        goodAudio.volume = 0.5;
+        goodAudio.play().catch((error) => {
+            console.error('Error playing good sound effect:', error);
+        });
+    }, [score, goodAudio]);
+
+    useEffect(() => {
+        if(lives === 3) { return }
+        badAudio.volume = 0.5;
+        badAudio.play().catch((error) => {
+            console.error('Error playing good sound effect:', error);
+        });
+    }, [lives, badAudio]);
 
     useEffect(() => {
         themeAudio.volume = 0.1;
@@ -164,10 +190,20 @@ function Game({ user }) {
 
     return (
         <div className="game-container">
+            {gameState === 'SOLVED' && (
+                    <Confetti
+                        width={window.innerWidth}
+                        height={1500}
+                    />
+            )}
             <div className="game-container2">
                 <div className="toolbar">
                     <div className="classic-game">
-                        <button onClick={() => { newGame(); handleButtonClick(); }}>Classic Game</button>
+                        <button onClick={() => {
+                            newGame();
+                            handleButtonClick();
+                        }}>Classic Game
+                        </button>
                         <label htmlFor="difficulty"></label>
                         <select
                             id="difficulty"
@@ -179,27 +215,39 @@ function Game({ user }) {
                             <option value={2}>Hard</option>
                         </select>
                     </div>
-                    <button onClick={() => { toggleCustomGame(); handleButtonClick(); }}>
-                        {isCustomGame ? 'Hide Custom Options' : 'Custom Game'}
-                    </button>
-                    {isCustomGame && (
-                        <>
-                            <form>
-                                <label htmlFor="rows">Rows: <text>{rows}</text></label><br/>
-                                <input type="range" id="rows" name="rows" min="5" max="25" value={rows}
-                                       onChange={(e) => setRows(parseInt(e.target.value))}/><br/>
-                                <label htmlFor="cols">Cols: <text>{cols}</text></label><br/>
-                                <input type="range" id="cols" name="cols" min="5" max="25" value={cols}
-                                       onChange={(e) => setCols(parseInt(e.target.value))}/><br/>
-                                <label htmlFor="numColors">Colors: <text>{numColors}</text></label><br/>
-                                <input type="range" id="numColors" name="numColors" min="2" max="8" value={numColors}
-                                       onChange={(e) => setNumColors(parseInt(e.target.value))}/><br/>
-                            </form>
-                            <button onClick={() => { newCustomGame(); handleButtonClick(); }}>
-                                Start Custom Game
+                    <div className="custom-game-and-help">
+                        <div className="button-container">
+                            <button className="custom-game" onClick={() => {
+                                toggleCustomGame();
+                                handleButtonClick();
+                            }}>
+                                {isCustomGame ? 'Hide' : 'Custom Game'}
                             </button>
-                        </>
-                    )}
+                            <Help/>
+                        </div>
+                        {isCustomGame && (
+                            <>
+                                <form>
+                                    <label htmlFor="rows">Rows: <text>{rows}</text></label><br/>
+                                    <input type="range" id="rows" name="rows" min="5" max="25" value={rows}
+                                           onChange={(e) => setRows(parseInt(e.target.value))}/><br/>
+                                    <label htmlFor="cols">Cols: <text>{cols}</text></label><br/>
+                                    <input type="range" id="cols" name="cols" min="5" max="25" value={cols}
+                                           onChange={(e) => setCols(parseInt(e.target.value))}/><br/>
+                                    <label htmlFor="numColors">Colors: <text>{numColors}</text></label><br/>
+                                    <input type="range" id="numColors" name="numColors" min="2" max="8"
+                                           value={numColors}
+                                           onChange={(e) => setNumColors(parseInt(e.target.value))}/><br/>
+                                </form>
+                                <button onClick={() => {
+                                    newCustomGame();
+                                    handleButtonClick();
+                                }}>
+                                    Start Custom Game
+                                </button>
+                            </>
+                        )}
+                    </div>
                 </div>
                 <div className="field-container">
                     <div className="score">
@@ -209,6 +257,12 @@ function Game({ user }) {
                             </header>
                         </h3>
                     </div>
+                    {gameState === 'SOLVED' && (
+                        <div className="you-won-message">You Won!</div>
+                    )}
+                    {gameState === 'FAILED' && (
+                        <div className="you-lost-message">You Lost!</div>
+                    )}
                     <Field field={field} updateStats={updateStats}/>
                     <div className="lives">
                         <h3>{lives}

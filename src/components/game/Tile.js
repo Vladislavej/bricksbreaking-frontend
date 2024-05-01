@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import gameService from "../../services/GameService";
 import "../../css/Tile.css";
-import "../../sounds/good.mp3"
 
 function Tile({ tile, x, y, fetchFieldData, disabled }) {
 

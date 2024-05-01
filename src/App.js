@@ -66,20 +66,18 @@ function App() {
                     <CSSTransition in={isLoggedIn} timeout={1000} classNames="fade" unmountOnExit>
                         <Game user={user}/>
                     </CSSTransition>
-                    <Help/>
                 </header>
             </CSSTransition>
             <CSSTransition in={isLoggedIn} timeout={1000} classNames="fade" unmountOnExit>
-                <header className="ScoresComponent">
+                <header>
+                    <Comments/>
+                    <CommentForm user={user}/>
                     <Scores/>
                 </header>
             </CSSTransition>
-            <CSSTransition in={isLoggedIn} timeout={1000} classNames="fade" unmountOnExit>
-                <header className="CommentsComponent">
-                    <Comments/>
-                    <CommentForm user={user}/>
-                </header>
-            </CSSTransition>
+            <footer className="footer">
+                <p>&copy; Vladislav Močilenko 2024, Technická Univerzita Košice</p>
+            </footer>
         </div>
     );
 }

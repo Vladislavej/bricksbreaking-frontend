@@ -1,56 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import "../css/Scores.css"; // Import the CSS file for styling
 
 const SCORES_API_REST_URL = "http://localhost:8080/api/score/bricksbreaking";
 
-export default class Scores extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            scores: []
-        };
-    }
+export default function Scores() {
+    const [showScores, setShowScores] = useState(false);
+    const [scores, setScores] = useState([]);
 
-    componentDidMount() {
-        axios.get(SCORES_API_REST_URL)
-            .then(response => {
-                this.setState({ scores: response.data });
-            })
-            .catch(error => {
-                console.error('Error fetching scores:', error);
-            });
-    }
+    const toggleScores = () => {
+        if (!showScores) {
+            axios.get(SCORES_API_REST_URL)
+                .then(response => {
+                    setScores(response.data);
+                    setShowScores(true);
+                })
+                .catch(error => {
+                    console.error('Error fetching scores:', error);
+                });
+        } else {
+            setShowScores(false);
+        }
+    };
 
-    formatDate(dateString) {
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-        const formattedDate = new Date(dateString).toLocaleDateString('sk', options);
-        return formattedDate;
-    }
+    const formatDate = (dateString) => {
+        return new Date(dateString).toLocaleString('en', {
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit'
+        });
+    };
 
-    render() {
-        return (
-            <div>
-                <h2 className="text-center">Scores</h2>
-                <table className="table table-striped scores-table">
-                    <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th>Points</th>
-                        <th>Date</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.scores.map(score =>
-                        <tr key={score.id}>
-                            <td>{score.player}</td>
-                            <td>{score.points}</td>
-                            <td>{this.formatDate(score.playedOn)}</td>
+    return (
+        <div className="scores-container">
+            <button className="showButton" onClick={toggleScores}>Scoreboard</button>
+            <div className={`scores-overlay ${showScores ? 'active' : ''}`}>
+                <div className="scores-window">
+                    <div>
+                        <h2>Scores <button className="close-button" onClick={toggleScores}>Close</button></h2>
+                    </div>
+                    <table className="scores-table">
+                        <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Points</th>
+                            <th>Date</th>
                         </tr>
-                    )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {scores.map(score =>
+                            <tr key={score.id}>
+                                <td>{score.player}</td>
+                                <td>{score.points}</td>
+                                <td>{formatDate(score.playedOn)}</td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        );
-    }
+        </div>
+    );
 }

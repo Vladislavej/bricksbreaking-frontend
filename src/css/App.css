@@ -26,6 +26,25 @@ body {
 .logo img {
     max-width: 75%;
     height: auto;
+    animation: floatUpDown 6s infinite alternate ease-in-out;
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
 }
 
 h1 {
@@ -90,4 +109,16 @@ h3 {
 
 .enable-overflow {
     overflow: auto;
+}
+
+.ScoresComponent {
+    padding: 50px;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.CommentsComponent {
+    padding: 50px;
+    width: 75%;
+    margin: 0 auto;
 }

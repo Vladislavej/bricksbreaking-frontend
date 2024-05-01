@@ -1,33 +1,116 @@
+.scores-container {
+    max-width: 250px;
+    margin: 0 auto;
+}
+
 .scores-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    border: 2px solid #000;
 }
 
 .scores-table th, .scores-table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    border: 3px solid #000;
 }
 
 .scores-table th {
-    background-color: #f2f2f2;
-    text-align: left;
-    font-weight: bold;
+    background-color: #009DDB; /* Sky Blue */
+    text-align: center;
+    font-size: 15px;
 }
 
 .scores-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: gainsboro;
 }
 
 .scores-table tbody tr:hover {
-    background-color: #ddd;
+    background-color:  #FCD000;
 }
 
 .scores-table td {
     word-break: break-word;
+    max-width: 300px;
 }
 
-.scores-table td:nth-child(1),
-.scores-table td:nth-child(2) {
-    text-align: center;
+.scores-table th:nth-child(1) {
+    background-color: #E71E08; /* Tomato */
+    width: 33.33%;
+}
+
+.scores-table th:nth-child(2) {
+    background-color: #42B132; /* Light Green */
+    width: 33.33%;
+}
+
+.scores-table th:nth-child(3) {
+    background-color: #FCD000; /* Yellow */
+    width: 33.33%;
+}
+
+.scores-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.scores-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.scores-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    z-index: 1001; /* Ensure it's above the overlay */
+}
+
+.close-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.close-button:hover {
+    background-color: #000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+}
+
+.showButton {
+    display: block;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: 5px solid #000000;
+    background-color: #009DDB;
+    color: #fff;
+    border-radius: 0;
+    font-family: 'ArcadeClassic', sans-serif;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.showButton:hover {
+    background-color: #0056b3;
 }

@@ -2,11 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .game-container2 {
     margin: auto;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 .field-container {
@@ -24,7 +25,6 @@
 
 .toolbar {
     width: 450px;
-    display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -62,6 +62,7 @@
 }
 
 .toolbar select {
+    background-color: #FCD000;
     width: 35%;
     padding: 10px;
     margin: 10px;
@@ -69,7 +70,6 @@
     border-radius: 0;
     font-family: 'ArcadeClassic', sans-serif;
     cursor: pointer;
-
 }
 
 .toolbar button {
@@ -99,4 +99,69 @@
 .star, .heart {
     margin-left: 5px; /* Adjust the spacing between the number and the image */
     height: auto; /* Maintain aspect ratio */
+    animation: floatUpDown 2s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 450px;
+}
+
+.you-won-message,
+.you-lost-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem; /* Adjust size as needed */
+    z-index: 1000;
+    color: #ffffff; /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+    text-align: center;
+    animation-duration: 2s; /* Duration of the animation */
+    animation-iteration-count: infinite; /* Repeat the animation infinitely */
+}
+
+.you-won-message {
+    background-color: rgba(0, 255, 0, 0.7); /* Green background color for "You Won" message */
+    padding: 20px 40px; /* Adjust padding as needed */
+    animation-name: rollAndWave;
+}
+
+.you-lost-message {
+    background-color: rgba(255, 0, 0, 0.7); /* Red background color for "You Lost" message */
+    padding: 20px 40px; /* Adjust padding as needed */
+    animation-name: rollAndWave;
+}
+
+@keyframes rollAndWave {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+        transform: translate(-50%, -50%) rotate(10deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    75% {
+        transform: translate(-50%, -50%) rotate(-10deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
 }
