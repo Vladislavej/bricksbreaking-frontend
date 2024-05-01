@@ -43,6 +43,7 @@ function Game({ user }) {
 
     useEffect(() => {
         if(score === 0) { return }
+        goodAudio.currentTime = 0;
         goodAudio.volume = 0.5;
         goodAudio.play().catch((error) => {
             console.error('Error playing good sound effect:', error);
@@ -51,9 +52,10 @@ function Game({ user }) {
 
     useEffect(() => {
         if(lives === 3) { return }
+        badAudio.currentTime = 0;
         badAudio.volume = 0.5;
         badAudio.play().catch((error) => {
-            console.error('Error playing good sound effect:', error);
+            console.error('Error playing bad sound effect:', error);
         });
     }, [lives, badAudio]);
 
