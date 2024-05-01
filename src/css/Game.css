@@ -1,0 +1,9 @@
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Use min-height to ensure the container takes up at least the height of the viewport */
+    padding: 20px; /* Add padding to create some space around the content */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    background-color: #f0f0f0; /* Change the background color as desired */
+}

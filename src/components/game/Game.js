@@ -1,4 +1,4 @@
-import '../../css/Style.css'
+import "../../css/Game.css";
 
 import React, {useEffect, useState} from 'react';
 import gameService from "../../services/GameService";
@@ -13,7 +13,7 @@ function Game({ user }) {
     const [rows, setRows] = useState(10);
     const [cols, setCols] = useState(10);
     const [numColors, setNumColors] = useState(5);
-
+    const isGuest = user && user.username === 'Guest';
 
     useEffect(() => {
         if (gameState === 'SOLVED' && user != null) {
@@ -76,6 +76,11 @@ function Game({ user }) {
     }
 
     const uploadScore = () => {
+        if (isGuest) {
+            console.log('Score not uploaded. Logged in as guest.');
+            return;
+        }
+
         const newScore = {
             player: user.username,
             game: 'bricksbreaking',

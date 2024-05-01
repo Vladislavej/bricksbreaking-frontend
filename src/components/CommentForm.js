@@ -4,6 +4,11 @@ import "../css/Comments.css"; // Import the CSS file for styling
 
 const AddCommentForm = ({ user }) => {
     const [comment, setComment] = useState('');
+    const isGuest = user && user.username === 'Guest';
+
+    if (isGuest) {
+        return null;
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -4,6 +4,7 @@ import authenticationService from "../services/AuthenticationService";
 const Login = ({ user, onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogin = async () => {
         try {
@@ -12,11 +13,17 @@ const Login = ({ user, onLogin }) => {
                 onLogin(userData);
                 console.log('Login successful');
             } else {
-                console.log('Login failed');
+                setError('Invalid username or password');
             }
         } catch (error) {
             console.error('Login error:', error);
+            setError('An error occurred during login');
         }
+    };
+
+    const handleGuestLogin = () => {
+        const guestUserData = { username: 'Guest' };
+        onLogin(guestUserData);
     };
 
     return (
@@ -26,9 +33,13 @@ const Login = ({ user, onLogin }) => {
             ) : (
                 <>
                     <h2>Login</h2>
-                    <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="text" placeholder="Username" value={username}
+                           onChange={(e) => setUsername(e.target.value)}/>
+                    <input type="password" placeholder="Password" value={password}
+                           onChange={(e) => setPassword(e.target.value)}/>
                     <button onClick={handleLogin}>Login</button>
+                    <button onClick={handleGuestLogin}>Sign in as guest</button>
+                    {error && <p style={{color: 'red'}}>{error}</p>}
                 </>
             )}
         </div>
