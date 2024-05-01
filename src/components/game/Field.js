@@ -39,7 +39,7 @@ export default class Field extends React.Component {
             return null;
         }
         return (
-            <div className="field-container windows-95">
+            <div className="field-container">
                 <table className="game-field">
                     <tbody>
                     {field.tiles.map((row, rowIndex) => (

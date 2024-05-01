@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import gameService from "../../services/GameService";
-import "../../css/Tile.css"; // Import the CSS file for styling
+import "../../css/Tile.css";
+import "../../sounds/good.mp3"
 
 function Tile({ tile, x, y, fetchFieldData, disabled }) {
+
     const handleClick = () => {
         if (!disabled) {
+
             gameService.breakBrick(x, y)
                 .then(response => {
                     console.log('Tile destroyed successfully:', x, y);

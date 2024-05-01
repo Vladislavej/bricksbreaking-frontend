@@ -2,8 +2,101 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Use min-height to ensure the container takes up at least the height of the viewport */
-    padding: 20px; /* Add padding to create some space around the content */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    background-color: #f0f0f0; /* Change the background color as desired */
+    height: 100vh;
+}
+
+.game-container2 {
+    margin: auto;
+}
+
+.field-container {
+    position: relative; /* Make the container relative */
+    display: flex;
+    align-items: center;
+}
+
+.score {
+    position: absolute; /* Position the stats container */
+    top: 50%; /* Align to the vertical center */
+    right: 110%; /* Push stats to the right */
+    transform: translateY(-50%); /* Adjust for vertical alignment */
+}
+
+.toolbar {
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.classic-game {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.classic-game button {
+    margin-right: 10px;
+}
+
+.lives {
+    position: absolute; /* Position the stats container */
+    top: 50%; /* Align to the vertical center */
+    left: 110%; /* Push stats to the right */
+    transform: translateY(-50%); /* Adjust for vertical alignment */
+}
+
+.score h3 {
+    font-size: 35px;
+}
+
+.lives h3 {
+    font-size: 35px;
+}
+
+@font-face {
+    font-family: 'ArcadeClassic';
+    src: url('../fonts/arcade.ttf') format('truetype');
+}
+
+.toolbar select {
+    width: 35%;
+    padding: 10px;
+    margin: 10px;
+    border: 5px solid #000000;
+    border-radius: 0;
+    font-family: 'ArcadeClassic', sans-serif;
+    cursor: pointer;
+
+}
+
+.toolbar button {
+    display: block;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: 5px solid #000000;
+    background-color: #009DDB;
+    color: #fff;
+    border-radius: 0;
+    font-family: 'ArcadeClassic', sans-serif;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.toolbar button:hover {
+    background-color: #0056b3;
+}
+
+.score h3, .lives h3 {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+}
+
+.star, .heart {
+    margin-left: 5px; /* Adjust the spacing between the number and the image */
+    height: auto; /* Maintain aspect ratio */
 }

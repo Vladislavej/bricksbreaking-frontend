@@ -11,16 +11,16 @@
 }
 
 table.game-field td.tile[data-color^="R"] {
-    background-color: red;
+    background-color: #E71E08;
 }
 table.game-field td.tile[data-color^="B"] {
-    background-color: blue;
+    background-color: #009DDB;
 }
 table.game-field td.tile[data-color^="G"] {
-    background-color: lime;
+    background-color: #42B132;
 }
 table.game-field td.tile[data-color^="Y"] {
-    background-color: yellow;
+    background-color: #FCD000;
 }
 table.game-field td.tile[data-color^="P"] {
     background-color: magenta;

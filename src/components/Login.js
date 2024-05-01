@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import authenticationService from "../services/AuthenticationService";
+import "../css/Login.css";
+import Register from "./Register";
 
 const Login = ({ user, onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [showRegister, setShowRegister] = useState(false); // State to toggle showing Register component
 
     const handleLogin = async () => {
         try {
@@ -27,7 +30,7 @@ const Login = ({ user, onLogin }) => {
     };
 
     return (
-        <div>
+        <div className="login-container">
             {user ? (
                 <p>Welcome, {user.username}!</p>
             ) : (
@@ -37,9 +40,11 @@ const Login = ({ user, onLogin }) => {
                            onChange={(e) => setUsername(e.target.value)}/>
                     <input type="password" placeholder="Password" value={password}
                            onChange={(e) => setPassword(e.target.value)}/>
+                    {error && <p style={{color: 'red'}}>{error}</p>}
                     <button onClick={handleLogin}>Login</button>
                     <button onClick={handleGuestLogin}>Sign in as guest</button>
-                    {error && <p style={{color: 'red'}}>{error}</p>}
+                    <button onClick={() => setShowRegister(true)}>Register</button>
+                    {showRegister && <Register />}
                 </>
             )}
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import authenticationService from "../services/AuthenticationService";
+import "./../css/Register.css"
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -26,7 +27,7 @@ const Register = () => {
     };
 
     return (
-        <div>
+        <div className="register-container">
             <h2>Register</h2>
             <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
