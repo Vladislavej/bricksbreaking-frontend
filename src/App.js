@@ -70,8 +70,7 @@ function App() {
             </CSSTransition>
             <CSSTransition in={isLoggedIn} timeout={1000} classNames="fade" unmountOnExit>
                 <header>
-                    <Comments/>
-                    <CommentForm user={user}/>
+                    <Comments user={user}/>
                     <Scores/>
                 </header>
             </CSSTransition>

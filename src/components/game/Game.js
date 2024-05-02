@@ -30,6 +30,7 @@ function Game({ user }) {
     const [showHelp, setShowHelp] = useState(false);
     const [goodAudio] = useState(new Audio(goodSound));
     const [badAudio] = useState(new Audio(badSound));
+    const [scoreUploaded, setScoreUploaded] = useState(true); //for refresh abuse
 
     const toggleHelp = () => {
         setShowHelp(!showHelp);
@@ -100,6 +101,7 @@ function Game({ user }) {
         gameService.newGame(difficulty)
             .then(response => {
                 setField(response.data);
+                setScoreUploaded(false);
             })
             .catch(error => {
                 console.error('Error fetching game field:', error);
@@ -154,8 +156,8 @@ function Game({ user }) {
     }
 
     const uploadScore = () => {
-        if (isGuest) {
-            console.log('Score not uploaded. Logged in as guest.');
+        if (isGuest || scoreUploaded) {
+            console.log('Score not uploaded. Logged in as guest or already uploaded.');
             return;
         }
 
@@ -178,6 +180,7 @@ function Game({ user }) {
                     throw new Error('Failed to upload score');
                 }
                 console.log('Score uploaded successfully');
+                setScoreUploaded(true);
             })
             .catch(error => {
                 console.error('Error uploading score:', error);

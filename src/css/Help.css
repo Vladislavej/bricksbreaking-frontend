@@ -15,7 +15,7 @@
 }
 
 .help-container button:hover {
-    background-color: darkgreen;
+    background-color: lime;
 }
 
 .help-overlay {
@@ -50,12 +50,24 @@
     z-index: 1000; /* Ensure it's above the overlay */
 }
 
-.close-button {
+.help-container .close-help-button {
     position: absolute;
-    max-width: 100px;
+    top: 10px; /* Adjust as needed for vertical positioning */
+    right: 10px; /* Adjust as needed for horizontal positioning */
+    height: 30px; /* Adjust button height */
+    width: 30px; /* Adjust button width */
     background: none;
     border: none;
     cursor: pointer;
+    font-family: 'ArcadeClassic', cursive;
+    font-size: 20px;
+    color: #000; /* Set the color of the button */
+    transition: color 0.3s ease; /* Add transition effect for color change */
+}
+
+.help-container .close-help-button:hover {
+    color: red; /* Change button color on hover */
+    background-color: white;
 }
 
 @font-face {

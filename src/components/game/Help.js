@@ -25,7 +25,7 @@ function Help() {
                         <li>🟪 16 points</li>
                         <li>🟧 32 points</li>
                     </ul>
-                    <button className="close-button" onClick={toggleHelp}>Close</button>
+                    <button className="close-help-button" onClick={toggleHelp}>X</button>
                 </div>
             </div>
         </div>

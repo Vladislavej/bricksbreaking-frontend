@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "../css/Comments.css"; // Import the CSS file for styling
 
-const AddCommentForm = ({ user }) => {
+const AddCommentForm = ({ user, onSuccess }) => {
     const [comment, setComment] = useState('');
     const isGuest = user && user.username === 'Guest';
 
@@ -16,30 +16,31 @@ const AddCommentForm = ({ user }) => {
         try {
             const response = await axios.post('http://localhost:8080/api/comment', {
                 game: 'bricksbreaking',
-                player: user,
+                player: user.username,
                 comment: comment,
                 commentedOn: new Date()
             });
 
             console.log('Comment added successfully:', response.data);
             setComment('');
+            onSuccess();
         } catch (error) {
             console.error('Error adding comment:', error);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
+        <div className="comment-form-container">
+            <form className="comment-form" onSubmit={handleSubmit}>
                 <label htmlFor="comment">Your Comment:</label>
-                <textarea
-                    id="comment"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                ></textarea>
-            </div>
-            <button type="submit">Add Comment</button>
-        </form>
+                    <textarea className="comment-text-area"
+                        id="comment"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                    ></textarea>
+                <button type="submit">Add Comment</button>
+            </form>
+        </div>
     );
 };
 

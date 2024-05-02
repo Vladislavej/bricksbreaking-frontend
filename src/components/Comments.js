@@ -1,27 +1,51 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import "../css/Comments.css"; // Import the CSS file for styling
-
+import "../css/Comments.css";
+import CommentForm from "./CommentForm"; // Import the CSS file for styling
 const COMMENTS_API_REST_URL = "http://localhost:8080/api/comment/bricksbreaking";
+const COMMENTS_PER_PAGE = 10; // Number of comments to display per page
 
-export default function Comments() {
+export default function Comments({ user }) {
     const [showComments, setShowComments] = useState(false);
     const [comments, setComments] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    useEffect(() => {
+        if (showComments) {
+            fetchComments();
+        }
+    }, [showComments]);
 
     const toggleComments = () => {
         if (!showComments) {
-            axios.get(COMMENTS_API_REST_URL)
-                .then(response => {
-                    setComments(response.data);
-                    setShowComments(true);
-                })
-                .catch(error => {
-                    console.error('Error fetching comments:', error);
-                });
+            fetchComments();
         } else {
             setShowComments(false);
         }
     };
+
+    const fetchComments = () => {
+        axios.get(COMMENTS_API_REST_URL)
+            .then(response => {
+                setComments(response.data);
+                setShowComments(true);
+            })
+            .catch(error => {
+                console.error('Error fetching comments:', error);
+            });
+    };
+
+    const paginateComments = () => {
+        const startIndex = (currentPage - 1) * COMMENTS_PER_PAGE;
+        const endIndex = startIndex + COMMENTS_PER_PAGE;
+        return comments.slice(startIndex, endIndex);
+    };
+
+    const changePage = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const totalPages = Math.ceil(comments.length / COMMENTS_PER_PAGE);
 
     const formatDate = (dateString) => {
         return new Date(dateString).toLocaleString('en', {
@@ -30,15 +54,13 @@ export default function Comments() {
         });
     };
 
-
-
     return (
         <div className="comments-container">
             <button className="showButton" onClick={toggleComments}>Comments</button>
             <div className={`comments-overlay ${showComments ? 'active' : ''}`}>
                 <div className="comments-window">
                     <div>
-                        <h2>Comments <button className="close-button" onClick={toggleComments}>Close</button></h2>
+                        <h2>Comments <button className="close-comments-button" onClick={toggleComments}>X</button></h2>
                     </div>
                     <table className="comments-table">
                         <thead>
@@ -49,7 +71,7 @@ export default function Comments() {
                         </tr>
                         </thead>
                         <tbody>
-                        {comments.map(comment =>
+                        {paginateComments().map(comment =>
                             <tr key={comment.id}>
                                 <td>{comment.player}</td>
                                 <td>{comment.comment}</td>
@@ -58,6 +80,12 @@ export default function Comments() {
                         )}
                         </tbody>
                     </table>
+                    <div className="pagination">
+                        {Array.from({ length: totalPages }, (_, index) => (
+                            <button key={index + 1} onClick={() => changePage(index + 1)}>{index + 1}</button>
+                        ))}
+                    </div>
+                    <CommentForm user={user} onSuccess={fetchComments}/>
                 </div>
             </div>
         </div>

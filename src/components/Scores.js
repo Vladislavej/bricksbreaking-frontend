@@ -36,7 +36,7 @@ export default function Scores() {
             <div className={`scores-overlay ${showScores ? 'active' : ''}`}>
                 <div className="scores-window">
                     <div>
-                        <h2>Scores <button className="close-button" onClick={toggleScores}>Close</button></h2>
+                        <h2>Scores <button className="close-scores-button" onClick={toggleScores}>X</button></h2>
                     </div>
                     <table className="scores-table">
                         <thead>

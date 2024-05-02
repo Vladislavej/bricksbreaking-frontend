@@ -1,0 +1,49 @@
+.comment-form-container {
+    resize: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    z-index: 1002; /* Ensure it's above the comments window and overlay */
+}
+
+.comment-form {
+    display: flex;
+    resize: none;
+    flex-direction: column;
+}
+
+.comment-form label {
+    font-weight: bold;
+    resize: none;
+    margin-bottom: 5px;
+}
+
+.comment-input-area {
+    height: 100px;
+    resize: none;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+}
+
+.comment-form button {
+    background-color: #009DDB;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-form button:hover {
+    background-color: #0056b3;
+}

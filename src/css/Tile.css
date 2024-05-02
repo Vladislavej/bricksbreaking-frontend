@@ -10,6 +10,20 @@
     box-sizing: border-box;
 }
 
+/* Animation on hover */
+.tile:hover {
+    animation: pulse 0.5s ease infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.25);
+    }
+}
+
 table.game-field td.tile[data-color^="R"] {
     background-color: #E71E08;
 }
@@ -23,8 +37,8 @@ table.game-field td.tile[data-color^="Y"] {
     background-color: #FCD000;
 }
 table.game-field td.tile[data-color^="P"] {
-    background-color: magenta;
+    background-color: darkviolet;
 }
 table.game-field td.tile[data-color^="O"] {
-    background-color: orange;
+    background-color: coral;
 }

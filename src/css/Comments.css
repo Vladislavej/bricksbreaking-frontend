@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+.comments-container button {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+}
+
 @font-face {
     font-family: 'ArcadeClassic';
     src: url('../fonts/arcade.ttf') format('truetype');
@@ -13,6 +17,7 @@
     border-collapse: collapse;
     margin-top: 20px;
     border: 2px solid #000;
+    max-height: 75%;
 }
 
 .comments-table th, .comments-table td {
@@ -84,24 +89,28 @@
     padding: 50px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 90%;
+    width: 50%;
     z-index: 1001; /* Ensure it's above the overlay */
+    height: 75%;
 }
 
-.close-button {
+.close-comments-button {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    top: 10px; /* Adjust as needed for vertical positioning */
+    right: 10px; /* Adjust as needed for horizontal positioning */
+    height: 30px; /* Adjust button height */
+    width: 30px; /* Adjust button width */
     background: none;
     border: none;
     cursor: pointer;
     font-family: 'ArcadeClassic', cursive;
     font-size: 20px;
+    color: #000; /* Set the color of the button */
+    transition: color 0.3s ease; /* Add transition effect for color change */
 }
 
-.close-button:hover {
-    background-color: #000; /* Black background on hover */
-    color: #fff; /* White text on hover */
+.close-comments-button:hover {
+    color: red; /* Change button color on hover */
 }
 
 .showButton {
@@ -121,4 +130,22 @@
 
 .showButton:hover {
     background-color: #0056b3;
+}
+
+/*.pagination {*/
+/*    position: absolute;*/
+/*    bottom: 50px; !* Adjust this value to your desired distance from the bottom *!*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*}*/
+
+.comment-form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px; /* Adjust padding as needed */
+    background-color: #f9f9f9; /* Example background color */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Example box shadow */
+    box-sizing: border-box;
 }
