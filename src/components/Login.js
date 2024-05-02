@@ -24,6 +24,14 @@ const Login = ({ user, onLogin }) => {
         }
     };
 
+    const toggleRegister = () => {
+        if(showRegister === true) {
+            setShowRegister(false);
+        } else {
+            setShowRegister(true);
+        }
+    }
+
     const handleGuestLogin = () => {
         const guestUserData = { username: 'Guest' };
         onLogin(guestUserData);
@@ -45,7 +53,7 @@ const Login = ({ user, onLogin }) => {
                     </div>
                     <button onClick={handleLogin}>Login</button>
                     <button onClick={handleGuestLogin}>Sign in as guest</button>
-                    <button onClick={() => setShowRegister(true)}>Register</button>
+                    <button onClick={toggleRegister}>Register</button>
                     {showRegister && <Register />}
                 </>
             )}
