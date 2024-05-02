@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import "../css/Scores.css"; // Import the CSS file for styling
+import "../css/Scores.css";
 
 const SCORES_API_REST_URL = "http://localhost:8080/api/score/bricksbreaking";
 
@@ -36,7 +36,7 @@ export default function Scores() {
             <div className={`scores-overlay ${showScores ? 'active' : ''}`}>
                 <div className="scores-window">
                     <div>
-                        <h2>Scores <button className="close-scores-button" onClick={toggleScores}>X</button></h2>
+                        <h2>Top 10 High-Scores <button className="close-scores-button" onClick={toggleScores}>X</button></h2>
                     </div>
                     <table className="scores-table">
                         <thead>

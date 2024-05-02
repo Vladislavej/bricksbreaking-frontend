@@ -10,7 +10,6 @@
     box-sizing: border-box;
 }
 
-/* Animation on hover */
 .tile:hover {
     animation: pulse 0.5s ease infinite alternate;
 }

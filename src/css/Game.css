@@ -6,21 +6,21 @@
 
 .game-container2 {
     margin: auto;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center;
 }
 
 .field-container {
-    position: relative; /* Make the container relative */
+    position: relative;
     display: flex;
     align-items: center;
 }
 
 .score {
-    position: absolute; /* Position the stats container */
-    top: 50%; /* Align to the vertical center */
-    right: 110%; /* Push stats to the right */
-    transform: translateY(-50%); /* Adjust for vertical alignment */
+    position: absolute;
+    top: 50%;
+    right: 110%;
+    transform: translateY(-50%);
 }
 
 .toolbar {
@@ -40,14 +40,14 @@
 
 .classic-game button {
     margin-right: 10px;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .lives {
-    position: absolute; /* Position the stats container */
-    top: 50%; /* Align to the vertical center */
-    left: 110%; /* Push stats to the right */
-    transform: translateY(-50%); /* Adjust for vertical alignment */
+    position: absolute;
+    top: 50%;
+    left: 110%;
+    transform: translateY(-50%);
 }
 
 .score h3 {
@@ -69,7 +69,7 @@
     padding: 10px;
     margin: 10px;
     border: 5px solid #000000;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     border-radius: 0;
     transition: background-color 0.3s ease;
     font-family: 'ArcadeClassic', sans-serif;
@@ -78,6 +78,7 @@
 
 .toolbar select:hover {
     background-color: yellow;
+    animation: popUp 0.5s ease infinite alternate;
 }
 
 .toolbar button {
@@ -97,16 +98,17 @@
 
 .toolbar button:hover {
     background-color: #0056b3;
+    animation: popUp 0.5s ease infinite alternate;
 }
 
 .score h3, .lives h3 {
-    display: flex; /* Use flexbox to align items */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    align-items: center;
 }
 
 .star, .heart {
-    margin-left: 5px; /* Adjust the spacing between the number and the image */
-    height: auto; /* Maintain aspect ratio */
+    margin-left: 5px;
+    height: auto;
     animation: floatUpDown 2s infinite alternate-reverse ease-in-out;
 }
 
@@ -130,7 +132,7 @@
 }
 
 .button-container button {
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .you-won-message,
@@ -139,24 +141,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4rem; /* Adjust size as needed */
+    font-size: 4rem;
     z-index: 1000;
-    color: #ffffff; /* Text color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: center;
-    animation-duration: 2s; /* Duration of the animation */
-    animation-iteration-count: infinite; /* Repeat the animation infinitely */
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 .you-won-message {
-    background-color: rgba(0, 255, 0, 0.7); /* Green background color for "You Won" message */
-    padding: 20px 40px; /* Adjust padding as needed */
+    background-color: rgba(0, 255, 0, 0.7);
+    padding: 20px 40px;
     animation-name: rollAndWave;
 }
 
 .you-lost-message {
-    background-color: rgba(255, 0, 0, 0.7); /* Red background color for "You Lost" message */
-    padding: 20px 40px; /* Adjust padding as needed */
+    background-color: rgba(255, 0, 0, 0.7);
+    padding: 20px 40px;
     animation-name: rollAndWave;
 }
 
@@ -175,5 +177,18 @@
     }
     100% {
         transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+.custom-game-and-help form {
+    text-align: center;
+}
+
+@keyframes popUp {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
     }
 }

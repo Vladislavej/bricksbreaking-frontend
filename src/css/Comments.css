@@ -4,7 +4,7 @@
 }
 
 .comments-container button {
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 @font-face {
@@ -46,17 +46,17 @@
 }
 
 .comments-table th:nth-child(1) {
-    background-color: #E71E08; /* Tomato */
+    background-color: #E71E08;
     width: 25%;
 }
 
 .comments-table th:nth-child(2) {
-    background-color: #009DDB; /* Sky Blue */
+    background-color: #009DDB;
     width: 50%;
 }
 
 .comments-table th:nth-child(3) {
-    background-color: #42B132; /* Light Green */
+    background-color: #42B132;
     width: 25%;
 }
 
@@ -70,8 +70,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 1000; /* Ensure it's above other content */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .comments-overlay.active {
@@ -90,36 +90,72 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 50%;
-    z-index: 1001; /* Ensure it's above the overlay */
+    z-index: 1001;
     height: 75%;
 }
 
 .close-comments-button {
     position: absolute;
-    top: 10px; /* Adjust as needed for vertical positioning */
-    right: 10px; /* Adjust as needed for horizontal positioning */
-    height: 30px; /* Adjust button height */
-    width: 30px; /* Adjust button width */
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
     background: none;
     border: none;
     cursor: pointer;
     font-family: 'ArcadeClassic', cursive;
     font-size: 20px;
-    color: #000; /* Set the color of the button */
-    transition: color 0.3s ease; /* Add transition effect for color change */
+    color: #000;
+    transition: color 0.3s ease;
 }
 
 .close-comments-button:hover {
-    color: red; /* Change button color on hover */
+    color: red;
+    animation: pulse 0.5s ease infinite alternate;
 }
 
-.showButton {
+.pagination button{
+    font-family: 'ArcadeClassic', sans-serif;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #FCD000;
+    border: 3px solid #000000;
+}
+
+.pagination button:hover{
+    background-color: yellow;
+    animation: pulse 0.5s ease infinite alternate;
+}
+
+.comment-form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.25);
+    }
+}
+
+.comments-container button.showButton {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
     display: block;
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
     border: 5px solid #000000;
-    background-color: #009DDB;
+    background-color: #42B132;
     color: #fff;
     border-radius: 0;
     font-family: 'ArcadeClassic', sans-serif;
@@ -128,24 +164,7 @@
     cursor: pointer;
 }
 
-.showButton:hover {
-    background-color: #0056b3;
-}
-
-/*.pagination {*/
-/*    position: absolute;*/
-/*    bottom: 50px; !* Adjust this value to your desired distance from the bottom *!*/
-/*    left: 50%;*/
-/*    transform: translateX(-50%);*/
-/*}*/
-
-.comment-form {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px; /* Adjust padding as needed */
-    background-color: #f9f9f9; /* Example background color */
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Example box shadow */
-    box-sizing: border-box;
+.comments-container button.showButton:hover {
+    background-color: darkgreen;
+    animation: pulse 0.5s ease infinite alternate
 }

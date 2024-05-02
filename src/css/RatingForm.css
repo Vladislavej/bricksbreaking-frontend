@@ -1,0 +1,35 @@
+.rating-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.rating-form-container button {
+    width: auto;
+    padding: 10px;
+    margin: 20px;
+    border: 5px solid #000000;
+    background-color: #E71E08;
+    color: #fff;
+    border-radius: 0;
+    font-family: 'ArcadeClassic', sans-serif;
+    transition: background-color 0.3s ease;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.rating-form-container button:hover {
+    animation: pulse 0.5s ease infinite alternate
+}
+
+.rating-form-container input {
+    width: 10%;
+    height: 30px;
+    font-family: 'ArcadeClassic', sans-serif;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+    cursor: pointer;
+}

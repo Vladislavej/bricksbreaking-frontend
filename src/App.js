@@ -4,10 +4,10 @@ import Comments from './components/Comments';
 import Scores from "./components/Scores";
 import Game from "./components/game/Game";
 import Login from "./components/Login";
-import Help from "./components/game/Help";
-import CommentForm from "./components/CommentForm";
 import logoImage from './images/logo.png';
 import { CSSTransition } from 'react-transition-group';
+import Rating from "./components/Rating";
+import RatingForm from "./components/RatingForm";
 
 function App() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
@@ -70,6 +70,8 @@ function App() {
             </CSSTransition>
             <CSSTransition in={isLoggedIn} timeout={1000} classNames="fade" unmountOnExit>
                 <header>
+                    <Rating/>
+                    <RatingForm user={user}/>
                     <Comments user={user}/>
                     <Scores/>
                 </header>

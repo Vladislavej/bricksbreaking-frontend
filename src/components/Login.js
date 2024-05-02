@@ -7,7 +7,7 @@ const Login = ({ user, onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [showRegister, setShowRegister] = useState(false); // State to toggle showing Register component
+    const [showRegister, setShowRegister] = useState(false);
 
     const handleLogin = async () => {
         try {
@@ -16,7 +16,7 @@ const Login = ({ user, onLogin }) => {
                 onLogin(userData);
                 console.log('Login successful');
             } else {
-                setError('Invalid username or password');
+                setError('Invalid login details');
             }
         } catch (error) {
             console.error('Login error:', error);
@@ -40,7 +40,9 @@ const Login = ({ user, onLogin }) => {
                            onChange={(e) => setUsername(e.target.value)}/>
                     <input type="password" placeholder="Password" value={password}
                            onChange={(e) => setPassword(e.target.value)}/>
-                    {error && <p style={{color: 'red'}}>{error}</p>}
+                    <div className="error-container">
+                        {error && <p style={{color: 'red'}}>{error}</p>}
+                    </div>
                     <button onClick={handleLogin}>Login</button>
                     <button onClick={handleGuestLogin}>Sign in as guest</button>
                     <button onClick={() => setShowRegister(true)}>Register</button>

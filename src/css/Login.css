@@ -42,9 +42,15 @@
 
 .login-container button:hover {
     background-color: #0056b3;
+    animation: pulse 0.5s ease infinite alternate
 }
 
 .login-container p {
     color: red;
     margin-bottom: 15px;
+    text-align: center;
+}
+
+.error-container {
+    margin: 0 auto;
 }

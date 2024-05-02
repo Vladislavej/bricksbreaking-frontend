@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import gameService from "../../services/GameService";
 import "../../css/Tile.css";
 

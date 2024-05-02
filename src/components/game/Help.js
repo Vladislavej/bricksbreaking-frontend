@@ -25,6 +25,8 @@ function Help() {
                         <li>🟪 16 points</li>
                         <li>🟧 32 points</li>
                     </ul>
+                    <p>If you want your scores to be submitted</p>
+                    <p>or be able to rate and comment please log in!</p>
                     <button className="close-help-button" onClick={toggleHelp}>X</button>
                 </div>
             </div>

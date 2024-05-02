@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import "../css/Comments.css"; // Import the CSS file for styling
+import "../css/CommentForm.css";
 
 const AddCommentForm = ({ user, onSuccess }) => {
     const [comment, setComment] = useState('');
@@ -32,13 +32,15 @@ const AddCommentForm = ({ user, onSuccess }) => {
     return (
         <div className="comment-form-container">
             <form className="comment-form" onSubmit={handleSubmit}>
-                <label htmlFor="comment">Your Comment:</label>
-                    <textarea className="comment-text-area"
-                        id="comment"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                    ></textarea>
                 <button type="submit">Add Comment</button>
+
+                <textarea
+                    className="comment-text-area"
+                    id="comment"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Enter your comment here..."
+                />
             </form>
         </div>
     );

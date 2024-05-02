@@ -4,7 +4,7 @@
 }
 
 .scores-container button {
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .scores-table {
@@ -20,7 +20,7 @@
 }
 
 .scores-table th {
-    background-color: #009DDB; /* Sky Blue */
+    background-color: #009DDB;
     text-align: center;
     font-size: 15px;
 }
@@ -39,17 +39,17 @@
 }
 
 .scores-table th:nth-child(1) {
-    background-color: #E71E08; /* Tomato */
+    background-color: #E71E08;
     width: 33.33%;
 }
 
 .scores-table th:nth-child(2) {
-    background-color: #42B132; /* Light Green */
+    background-color: #42B132;
     width: 33.33%;
 }
 
 .scores-table th:nth-child(3) {
-    background-color: #FCD000; /* Yellow */
+    background-color: #FCD000;
     width: 33.33%;
 }
 
@@ -62,8 +62,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 1000; /* Ensure it's above other content */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .scores-overlay.active {
@@ -82,26 +82,27 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     max-width: 90%;
-    z-index: 1001; /* Ensure it's above the overlay */
+    z-index: 1001;
 }
 
 .close-scores-button {
     position: absolute;
-    top: 10px; /* Adjust as needed for vertical positioning */
-    right: 10px; /* Adjust as needed for horizontal positioning */
-    height: 30px; /* Adjust button height */
-    width: 30px; /* Adjust button width */
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
     background: none;
     border: none;
     cursor: pointer;
     font-family: 'ArcadeClassic', cursive;
     font-size: 20px;
-    color: #000; /* Set the color of the button */
-    transition: color 0.3s ease; /* Add transition effect for color change */
+    color: #000;
+    transition: color 0.3s ease;
 }
 
 .close-scores-button:hover {
-    color: red; /* Change button color on hover */
+    color: red;
+    animation: pulse 0.5s ease infinite alternate
 }
 
 .showButton {
@@ -110,8 +111,8 @@
     padding: 10px;
     margin: 10px;
     border: 5px solid #000000;
-    background-color: #009DDB;
-    color: #fff;
+    background-color: #FCD000;
+    color: black;
     border-radius: 0;
     font-family: 'ArcadeClassic', sans-serif;
     transition: background-color 0.3s ease;
@@ -120,5 +121,6 @@
 }
 
 .showButton:hover {
-    background-color: #0056b3;
+    background-color: yellow;
+    animation: pulse 0.5s ease infinite alternate
 }

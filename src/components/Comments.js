@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import "../css/Comments.css";
-import CommentForm from "./CommentForm"; // Import the CSS file for styling
+import CommentForm from "./CommentForm";
 const COMMENTS_API_REST_URL = "http://localhost:8080/api/comment/bricksbreaking";
-const COMMENTS_PER_PAGE = 10; // Number of comments to display per page
+const COMMENTS_PER_PAGE = 10;
 
 export default function Comments({ user }) {
     const [showComments, setShowComments] = useState(false);
@@ -17,18 +17,13 @@ export default function Comments({ user }) {
     }, [showComments]);
 
     const toggleComments = () => {
-        if (!showComments) {
-            fetchComments();
-        } else {
-            setShowComments(false);
-        }
+        setShowComments(!showComments);
     };
 
     const fetchComments = () => {
         axios.get(COMMENTS_API_REST_URL)
             .then(response => {
                 setComments(response.data);
-                setShowComments(true);
             })
             .catch(error => {
                 console.error('Error fetching comments:', error);
@@ -60,7 +55,7 @@ export default function Comments({ user }) {
             <div className={`comments-overlay ${showComments ? 'active' : ''}`}>
                 <div className="comments-window">
                     <div>
-                        <h2>Comments <button className="close-comments-button" onClick={toggleComments}>X</button></h2>
+                        <h1>Comments <button className="close-comments-button" onClick={toggleComments}>X</button></h1>
                     </div>
                     <table className="comments-table">
                         <thead>

@@ -26,9 +26,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.5);
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    z-index: 999; /* Ensure it's above other content */
+    z-index: 999;
 }
 
 .help-overlay.active {
@@ -46,27 +46,27 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 90%; /* Adjust as needed */
-    z-index: 1000; /* Ensure it's above the overlay */
+    max-width: 90%;
+    z-index: 1000;
 }
 
 .help-container .close-help-button {
     position: absolute;
-    top: 10px; /* Adjust as needed for vertical positioning */
-    right: 10px; /* Adjust as needed for horizontal positioning */
-    height: 30px; /* Adjust button height */
-    width: 30px; /* Adjust button width */
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
     background: none;
     border: none;
     cursor: pointer;
     font-family: 'ArcadeClassic', cursive;
     font-size: 20px;
-    color: #000; /* Set the color of the button */
-    transition: color 0.3s ease; /* Add transition effect for color change */
+    color: #000;
+    transition: color 0.3s ease;
 }
 
 .help-container .close-help-button:hover {
-    color: red; /* Change button color on hover */
+    color: red;
     background-color: white;
 }
 
@@ -75,8 +75,16 @@
     src: url('../fonts/arcade.ttf') format('truetype');
 }
 
-/* Font fallback */
 .help-container button,
 .help-window {
-    font-family: 'ArcadeClassic', cursive, sans-serif; /* Add other fallbacks if necessary */
+    font-family: 'ArcadeClassic', cursive, sans-serif;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.25);
+    }
 }
