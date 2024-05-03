@@ -53,7 +53,7 @@ const Login = ({ user, onLogin }) => {
                     </div>
                     <button onClick={handleLogin}>Login</button>
                     <button onClick={handleGuestLogin}>Sign in as guest</button>
-                    <button onClick={toggleRegister}>Register</button>
+                    <button onClick={toggleRegister}>{showRegister ? 'Hide' : 'Register'}</button>
                     {showRegister && <Register />}
                 </>
             )}

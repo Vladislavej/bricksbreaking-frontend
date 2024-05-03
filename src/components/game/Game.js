@@ -12,6 +12,7 @@ import heartImage from "../../images/heart.png";
 import starImage from "../../images/star.png";
 import Help from "./Help";
 import Confetti from 'react-confetti';
+
 function Game({ user }) {
     const [field, setField] = useState({ tiles: [] });
     const [score, setScore] = useState(0);
@@ -31,6 +32,7 @@ function Game({ user }) {
     const [goodAudio] = useState(new Audio(goodSound));
     const [badAudio] = useState(new Audio(badSound));
     const [scoreUploaded, setScoreUploaded] = useState(true); //for refresh abuse
+    const [transitionScore, setTransitionScore] = useState(0);
 
     const toggleHelp = () => {
         setShowHelp(!showHelp);
@@ -63,7 +65,6 @@ function Game({ user }) {
     useEffect(() => {
         themeAudio.volume = 0.1;
         if (gameState === 'PLAYING') {
-            themeAudio.play();
             themeAudio.play().then(() => {
                 console.log('Music playing');
             }).catch((error) => {
@@ -88,6 +89,20 @@ function Game({ user }) {
             victoryAudio.currentTime = 0;
         };
     }, [gameState, themeAudio, victoryAudio]);
+
+    useEffect(() => {
+        const transitionDuration = 500;
+        const step = Math.ceil((score - transitionScore) / (transitionDuration / 250));
+        const timer = setInterval(() => {
+            if (transitionScore !== score) {
+                setTransitionScore(prevScore => prevScore + step);
+            } else {
+                clearInterval(timer);
+            }
+        }, 20);
+        if(score === 0) setTransitionScore(0);
+        return () => clearInterval(timer);
+    }, [score, transitionScore]);
 
     const handleButtonClick = () => {
         buttonAudio.volume = 0.5;
@@ -196,10 +211,10 @@ function Game({ user }) {
     return (
         <div className="game-container">
             {gameState === 'SOLVED' && (
-                    <Confetti
-                        width={window.innerWidth}
-                        height={1500}
-                    />
+                <Confetti
+                    width={window.innerWidth}
+                    height={1500}
+                />
             )}
             <div className="game-container2">
                 <div className="toolbar">
@@ -256,7 +271,7 @@ function Game({ user }) {
                 </div>
                 <div className="field-container">
                     <div className="score">
-                        <h3>{score}
+                        <h3>{transitionScore}
                             <header className="star">
                                 <img src={starImage} alt="Star"/>
                             </header>
