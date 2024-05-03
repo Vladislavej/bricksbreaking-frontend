@@ -28,15 +28,11 @@ function Game({ user }) {
     const [victoryAudio] = useState(new Audio(victorySound));
     const [failAudio] = useState(new Audio(failSound));
     const [buttonAudio] = useState(new Audio(buttonSound));
-    const [showHelp, setShowHelp] = useState(false);
     const [goodAudio] = useState(new Audio(goodSound));
     const [badAudio] = useState(new Audio(badSound));
     const [scoreUploaded, setScoreUploaded] = useState(true); //for refresh abuse
     const [transitionScore, setTransitionScore] = useState(0);
 
-    const toggleHelp = () => {
-        setShowHelp(!showHelp);
-    };
 
     useEffect(() => {
         if (gameState === 'SOLVED' && user != null) {
@@ -64,6 +60,7 @@ function Game({ user }) {
 
     useEffect(() => {
         themeAudio.volume = 0.1;
+        themeAudio.loop = true;
         if (gameState === 'PLAYING') {
             themeAudio.play().then(() => {
                 console.log('Music playing');
@@ -88,7 +85,7 @@ function Game({ user }) {
             victoryAudio.pause();
             victoryAudio.currentTime = 0;
         };
-    }, [gameState, themeAudio, victoryAudio]);
+    }, [gameState, themeAudio, victoryAudio, failAudio]);
 
     useEffect(() => {
         const transitionDuration = 500;
