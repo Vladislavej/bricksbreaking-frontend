@@ -246,13 +246,13 @@ function Game({ user }) {
                             <>
                                 <form>
                                     <label htmlFor="rows">Rows: <text>{rows}</text></label><br/>
-                                    <input type="range" id="rows" name="rows" min="5" max="25" value={rows}
+                                    <input className="rowsSlider" type="range" id="rows" name="rows" min="5" max="25" value={rows}
                                            onChange={(e) => setRows(parseInt(e.target.value))}/><br/>
                                     <label htmlFor="cols">Cols: <text>{cols}</text></label><br/>
-                                    <input type="range" id="cols" name="cols" min="5" max="25" value={cols}
+                                    <input className="colsSlider" type="range" id="cols" name="cols" min="5" max="25" value={cols}
                                            onChange={(e) => setCols(parseInt(e.target.value))}/><br/>
                                     <label htmlFor="numColors">Colors: <text>{numColors}</text></label><br/>
-                                    <input type="range" id="numColors" name="numColors" min="2" max="8"
+                                    <input className="colorsSlider" type="range" id="numColors" name="numColors" min="2" max="8"
                                            value={numColors}
                                            onChange={(e) => setNumColors(parseInt(e.target.value))}/><br/>
                                 </form>
