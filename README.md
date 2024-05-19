@@ -4,7 +4,7 @@
 
 Bricks Breaking is a simple yet addictive puzzle game. The objective of the game is to clear the grid by breaking groups of bricks of the same color.
 
-Front-End Repo: https://github.com/Vladislavej/bricksbreaking-frontend
+Back-End Repo: https://github.com/Vladislavej/bricksbreaking-backend
 
 ## Demo
 
