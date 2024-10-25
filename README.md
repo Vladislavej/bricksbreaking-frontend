@@ -6,9 +6,11 @@ Bricks Breaking is an addictive puzzle game where the objective is to clear the 
 
 ![Bricks Breaking](./public/bricksbreaking.webp)
 
+[Back-End Repo](https://github.com/Vladislavej/bricksbreaking-backend)
+
 ## Demo
 
-1. [Gameplay](https://youtu.be/8qL7d96ftIo)
+1. [Console UI](https://youtu.be/8qL7d96ftIo)
 2. [JPA + REST](https://youtu.be/6HiNzos8yHo)
 3. [WEB UI](https://youtu.be/NGacKtTKnG0)
 
@@ -39,10 +41,6 @@ To play Bricks Breaking, follow these simple steps:
 - **Backend**: Java, Spring Boot
 - **Frontend**: React
 - **Database**: PostgreSQL
-
-## Back-End Repository
-
-[Back-End Repo](https://github.com/Vladislavej/bricksbreaking-backend)
 
 ## Getting Started
 
